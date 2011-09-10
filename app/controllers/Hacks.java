@@ -19,20 +19,20 @@ import com.google.gson.reflect.TypeToken;
 
 public class Hacks extends Controller {
 	public class Feed {
-	    private List<Hack> entries;
+	    private List<Hack> items;
 	    
-		public void setEntries(List<Hack> entries) {
-			this.entries = entries;
+		public void setEntries(List<Hack> items) {
+			this.items = items;
 		}
 
 		public List<Hack> getEntries() {
-			return entries;
+			return items;
 		}
 	}
 	
     public static void fetch() {
     	try {
-            URL url = new URL("http://api.ihackernews.com/page?format=jsonp");
+            URL url = new URL("http://api.ihackernews.com/page?format=json");
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8" ));
             String line, json = "";
 			while ((line = reader.readLine()) != null) {
