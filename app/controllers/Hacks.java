@@ -29,23 +29,23 @@ public class Hacks extends Controller {
 			return items;
 		}
 	}
-	
+		
     public static void fetch() {
     	try {
-            URL url = new URL("http://api.ihackernews.com/page?format=json");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8" ));
-            String line, json = "";
-			while ((line = reader.readLine()) != null) {
-            	json = json+line;
-            }
+    		List<Hack> items = Cache.get("items", List.class);
+    		if (items == null) {
+    			URL url = new URL("http://api.ihackernews.com/page?format=json");
+                BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8" ));
+                String line, json = "";
+    			while ((line = reader.readLine()) != null) {
+                	json = json+line;
+                }
+    			Feed objs = new Gson().fromJson(json, Feed.class);
+    			items = objs.getEntries();
+    			Cache.set("items", items, "5mn");
+    		}
+			render(items);
 			
-			Feed objs = new Gson().fromJson(json, Feed.class);
-			Cache.set("feed", objs);
-			/*
-			for(Hack entrie : objs.getEntries()) {
-				new Hack(entrie.id, entrie.date, entrie.body, entrie.name, entrie.url);
-	        }
-	        */
         } catch (MalformedURLException e) {} catch (IOException e) {}
     }
 }

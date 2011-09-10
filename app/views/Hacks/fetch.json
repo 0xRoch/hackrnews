@@ -1,0 +1,21 @@
+{
+    "children": [
+%{int pos = 0}%#{list items:items, as:'item'}%{pos++}%
+    {
+     "children": [], 
+     "data": {
+       "playcount": ${item.points},
+       "url": "${item.url}",
+       "$color": "#ff6600",
+       "$area": ${item.points}
+     }, 
+     "id": "${item.id}",
+     "name": "${item.title.replace("\"","\\\"")}"
+    }#{if pos != items.size()},#{/if}
+#{/list}
+     ], 
+     "data": {}, 
+     "id": "root", 
+     "name": "hackrnews"
+}
+

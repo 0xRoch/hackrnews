@@ -54,16 +54,12 @@ a {
 
 #left-container {
     left:0;
-    background-image:url('col2.png');
-    background-position:center right;
     border-left:1px solid #ddd;
     
 }
 
 #right-container {
     right:0;
-    background-image:url('col1.png');
-    background-position:center left;
     border-right:1px solid #ddd;
 }
 
