@@ -6,6 +6,7 @@
      "data": {
        "playcount": ${item.points},
        "url": "${item.url}",
+       "image": "http://www.sitethumbshot.com/thumbnail.php?size=M&url=${item.url}&key=153d05c915f4c4d74d7b05be1cbaf857",
        "$color": "#ff6600",
        "$area": ${item.points}
      }, 
